@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_dataLayer.html") %>
+      <%= t.include("partials/_gtm.html") %>
+    <% } %>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_gtmNoScript.html") %>
+    <% } %>
+    <responsive-child class="body">
+       <%= t.include("partials/_nav.html") %>
+      <!-- content goes here -->
+      <!-- <div class="field">
+        <img src="assets/SoccerFieldGoals.svg">
+      </div> -->
+      <h1>Soccer goals project</h1>
+      <p class="byline">By Sean Quinton</p>
+      <p class="staff-position">Seattle Times staff reporter</p>
+      <p class="publish-date">Published Oct. 10, 2021</p>
+
+      <div id="body">
+
+      <div class="field">
+        <img src="assets/half_soccerfield.png">
+        <div class="overlay">
+          <% json.OnlyGoals.forEach(function(game, i) { %>
+            <div data-dot="<%= game.ID %>" class="dot" style="position: absolute; left:<%= game.Left_per - 50 %>%; top:<%= game.Top_per %>%;"></div>
+          <% }); %>
+        </div>
+      </div>
+
+      <div class="text">
+        <% json.OnlyGoals.forEach(function(game, i) { %>
+          <div class="game" data-game="<%= game.ID %>">
+            <div class="date"><%= game.Date %></div>
+
+            <div class="match"><%= game.Match %></div>
+
+            <div class="score"><%= game.Result %></div>
+
+            <div class="shots">
+              <%= game.Goals %> out of <%= game.Shots %>
+            </div>
+            <div class="tweet">
+              <blockquote class="twitter-tweet"><p lang="es" dir="ltr">RAÚL 👏 RUIDÍAZ 👏 <a href="https://t.co/8LxjmkVP2E">pic.twitter.com/8LxjmkVP2E</a></p>&mdash; Seattle Sounders FC (@SoundersFC) <a href="https://twitter.com/SoundersFC/status/1437996888007999489?ref_src=twsrc%5Etfw">September 15, 2021</a></blockquote>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+       <%= t.include("partials/_navBottom.html") %>
+     </div>
+    </responsive-child>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>

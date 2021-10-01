@@ -1,0 +1,77 @@
+@import "seattletimes";
+
+#body {
+  max-width: 1300px;
+  // margin: auto;
+  // responsive
+  // perspective: 1000px;
+  // -webkit-perspective: 1000px;
+  // overflow: hidden;
+
+  .text {
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    width: 50%;
+    margin-left: 50%;
+
+    .game {
+      background-color: #eee;
+      margin: 50vh 0vh;
+
+      .twitter-tweet {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  .field {
+    width: auto;
+    height: 90vh;
+    // margin: auto;
+    // margin-left: -50%;
+    position: sticky;
+    top: 5%;
+    z-index: -10;
+
+    // -webkit-animation: rotateOnX 2s forwards linear;
+    //     animation: zoomin 2s 2s forwards linear;
+        // -webkit-perspective: 1000px;
+        // perspective: 1000px;
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+
+    img { max-height: 100%; }
+
+    .overlay {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 90vh;
+      .dot {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: white;
+      }
+    }
+
+
+  }
+}
+
+@-webkit-keyframes rotateOnX {
+  to {
+    -webkit-transform: rotateX(87deg);
+            transform: rotateX(87deg);
+  }
+}
+
+@-webkit-keyframes zoomin {
+  to {
+    -webkit-transform: scale(2, 2) rotateX(87deg);
+            transform:  scale(2, 2) rotateX(87deg);
+  }
+}
