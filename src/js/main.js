@@ -2,6 +2,7 @@
 // setTimeout(() => paywall(12345678), 5000);
 
 require("component-responsive-frame/child");
+const $ = require('jquery');
 require('waypoints/lib/noframework.waypoints.min');
 
 // function domReady(fn) {
@@ -13,46 +14,66 @@ require('waypoints/lib/noframework.waypoints.min');
 //   }
 // }
 
-var games = document.querySelectorAll(".text .game");
+// var games = document.querySelectorAll(".text .game");
+var version;
 
-document.addEventListener("DOMContentLoaded", function() {
-  
+if ($(window).width() < 500) {
+   version = 'mobile';
+}
+else {
+   version = 'desktop';
+}
+
+
+
+
 function makeGameWaypoints() {
-  games.forEach(el => {
+  $('.text .game').each((index, element) => {
+    $(element).ready(function() {
+      console.log("im running");
 
             new Waypoint({
-                element: el,
-                enabled: false,
+                element: element,
+                enabled: true,
                 handler: function(direction) {
                   if(direction === "down") {
-
+                    console.log("hi" + element);
+                    var unique_id = $(element).data("game");
+                    $(".overlay").find(`[data-dot=${unique_id}]`).css("background-color", "yellow");
                   }
                   else if (direction === "up") {
-
+                    var unique_id = $(element).data("game");
+                    $(".overlay").find(`[data-dot=${unique_id}]`).css("background-color", "white");
                   }
                 },
                 offset: '80%'
             });
 
             new Waypoint({
-                element: el,
-                enabled: false,
+                element: element,
+                enabled: true,
                 handler: function(direction) {
                   if(direction === "down") {
+                    var unique_id = $(element).data("game");
+                    $(".overlay").find(`[data-dot=${unique_id}]`).css("background-color", "white");
                   }
                   else if (direction === "up") {
+                    var unique_id = $(element).data("game");
+                    $(".overlay").find(`[data-dot=${unique_id}]`).css("background-color", "yellow");
                   }
                 },
                 offset: '-20%'
             });
 
 
+      });
+
   });
 };
 
 
-// console.log(games);
-
-makeGameWaypoints();
-
+$( document ).ready(function() {
+    makeGameWaypoints();
 });
+
+// console.log(games);
