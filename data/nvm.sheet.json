@@ -1,0 +1,37 @@
+[
+  {
+    "ID": 13,
+    "Date": "2021/04/16",
+    "Match": "SEA vs MIN",
+    "Result": "W 4-0",
+    "Minute": 70,
+    "Type": "Right foot",
+    "ExpectedGoalPer": "36.90%",
+    "Goals": 1,
+    "distance": "",
+    "x_coordinate": 733.7542656,
+    "y_coordinate": 289.6963584,
+    "field_length": 843.2,
+    "field_width": 552.8,
+    "Left_per": 87.02019279,
+    "Top_per": 52.40527467,
+    "Link": "https://www.soundersfc.com/competitions/mls-regular-season/2021/matches/seavsmin-04-16-2021/stats"
+  },
+  {
+    "ID": 12,
+    "Date": "2021/04/16",
+    "Match": "SEA vs MIN",
+    "Result": "W 4-0",
+    "Minute": 73,
+    "Type": "Left foot",
+    "ExpectedGoalPer": "72.50%",
+    "Goals": 1,
+    "distance": "",
+    "x_coordinate": 790.4233984,
+    "y_coordinate": 258.839616,
+    "field_length": 843.2,
+    "field_width": 552.8,
+    "Left_per": 93.74091537,
+    "Top_per": 46.82337482
+  }
+]
