@@ -17,6 +17,6 @@
   "image": "assets/social.jpg",
   "sheets": ["1_a7XVugVYVE5E8AiBQxTgnscjA1H3OXDQ1JTzo5LYqM"],
   "docs": [],
-  "embedded": true,
+  "embedded": false,
   "production": false
 }

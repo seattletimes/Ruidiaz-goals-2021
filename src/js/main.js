@@ -27,6 +27,13 @@ if ($(window).width() < 500) {
    // $('.field-mobile .overlay .dot').each((index, element) => {
    //   $(element).css("transform",`translate(${spillOver}px)`);
    // });
+   $( ".twitter" ).click(function() {
+      $(this).closest( ".game" ).find('.tweet .twitter-tweet  iframe').toggleClass("show");
+      $(this).closest( ".game" ).find('.tweet .loading').toggleClass("show");
+      $(this).find('span').toggleClass("show");
+    });
+
+
 
 
 
@@ -47,17 +54,16 @@ function makeGameWaypoints() {
                 element: element,
                 enabled: true,
                 handler: function(direction) {
+                  var unique_id = $(element).data("game");
+                  console.log("hi" + unique_id);
                   if(direction === "down") {
-                    // console.log("hi" + element);
-                    var unique_id = $(element).data("game");
-                    console.log("hi" + unique_id);
-                    $(".overlay").find(`[data-dot=${unique_id}]`).css("background-color", "yellow");
-                    $(".overlay").find(`[data-dot=${unique_id}]`).css("opacity", "1");
+                    $(".overlay").find(`[data-dot=${unique_id}]`).addClass( "show" );
+                    // $(".overlay").find(`[data-dot=${unique_id}]`).css("opacity", "1");
                   }
                   else if (direction === "up") {
-                    var unique_id = $(element).data("game");
-                    $(".overlay").find(`[data-dot=${unique_id}]`).css("background-color", "transparent");
-                    $(".overlay").find(`[data-dot=${unique_id}]`).css("opacity", "0.3");
+                    $(".overlay").find(`[data-dot=${unique_id}]`).removeClass( "show" );
+                    // $(".overlay").find(`[data-dot=${unique_id}]`).css("background-color", "transparent");
+                    // $(".overlay").find(`[data-dot=${unique_id}]`).css("opacity", "0.5");
                   }
                 },
                 offset: '80%'
@@ -67,16 +73,16 @@ function makeGameWaypoints() {
                 element: element,
                 enabled: true,
                 handler: function(direction) {
+                  var unique_id2 = $(element).data("game");
+                  console.log("hi" + unique_id2);
                   if(direction === "down") {
-                    var unique_id = $(element).data("game");
-                    $(".overlay").find(`[data-dot=${unique_id}]`).css("color", "white");
+                    $(".overlay").find(`[data-dot=${unique_id2}]`).removeClass( "show" );
                   }
                   else if (direction === "up") {
-                    var unique_id = $(element).data("game");
-                    $(".overlay").find(`[data-dot=${unique_id}]`).css("color", "yellow");
+                    $(".overlay").find(`[data-dot=${unique_id2}]`).addClass( "show" );
                   }
                 },
-                offset: '-20%'
+                offset: '-30%'
             });
 
 

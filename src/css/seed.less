@@ -1,32 +1,35 @@
 @import "seattletimes";
+@import "comments";
 
 @green: #64a70b;
+
+zeus-ad {
+  margin: 10px auto 0px auto !important;
+}
 
 .intro {
   max-width: 650px;
   margin: auto;
   padding: 10px;
+
+  h1 {
+    font-size: 2.5em;
+    margin-top: 5px;
+  }
 }
 
 #body {
   max-width: 1320px;
   margin: auto;
   padding: 10px;
-  // responsive
-  // perspective: 1000px;
-  // -webkit-perspective: 1000px;
-  // overflow: hidden;
 
   .text {
-    // position: absolute;
-    // top: 0;
-    // right: 0;
     width: 40%;
-    max-width: 500px;
-    // margin-left: auto;
+    margin-left: 60%;
 
     @media @mobile {
       width: 100%;
+      margin-left: 0%;
     }
 
     .green {
@@ -35,30 +38,114 @@
 
     .game {
       background-color: #eee;
-      padding: 10px;
-      margin: 100vh 0vh;
+
+      margin: 0 0 50vh 10px;
       font-family: @df-sans;
-      text-align: center;
+      // text-align: center;
+      @media @mobile {
+        margin: 50vh 0px;
+        background-color: rgba(255,255,255,0);
+
+      }
+
+      .statbox {
+        padding: 10px;
+        background-color: #eee;
+        @media @mobile { background-color: rgba(255,255,255,0.8)}
+      }
+
+      .date {
+        float: left;
+        position: absolute;
+        font-size: 0.9em;
+        color: @df-middle-gray;
+        font-style: italic;
+      }
+
+      .result {
+        // font-weight: bold;
+        // text-transform: uppercase;
+        // letter-spacing: 2px;
+        // &.Tie {
+        //   color: @df-orange;
+        // }
+        // &.Win {
+        //   color: @green;
+        // }
+      }
+
+      .shots span {
+        color: @green;
+        font-weight: bold;
+      }
 
       .match {
         font-weight: bold;
-        font-size: 2em;
+        font-size: 1.5em;
+        line-height: 1em;
+        margin: 0px auto;
         text-align: center;
+      }
+      .score {
+
+      }
+
+      .twitter {
+        background-color: @green;
+        font-size: 14px;
+        margin-top: 10px;
+        span {
+          display: none;
+          &.show {
+            display: inline-block;
+          }
+        }
       }
 
       .tweet {
         max-width: 400px;
-        height: 444px;
+        height: 600px;
         margin: auto;
+        position: relative;
+
+        .loading {
+          display: block;
+          width: 100%;
+          font-size: 17px;
+          text-align: center;
+          font-weight: bold;
+          letter-spacing: 2px;
+          // color: white;
+          &.show {
+            visibility: visible;
+          }
+        }
+
         @media @mobile {
-          max-width: 280px;
-          height: 360px;
+          visibility: hidden;
+          max-width: 400px;
+          height: 600px;
+
         }
         .twitter-tweet {
           margin-left: auto;
           margin-right: auto;
-          margin-top: 0px;
+          margin-top: 0px !important;
           margin-bottom: 0px;
+          position: absolute !important;
+          top: 0;
+
+          iframe {
+            @media @mobile {
+              visibility: hidden !important;
+
+            }
+            &.show {
+              @media @mobile {
+                visibility: visible !important;
+              }
+            }
+          }
         }
       }
 
@@ -69,13 +156,34 @@
   .field-desktop {
     display: block;
     @media @mobile { display: none; }
-    width: 100%;
+    width: 60%;
+    max-width: 800px;
     position: sticky;
-    top: 0%;
+    top: 15%;
     z-index: -10;
-    @media @mobile { top: 0%; }
         -webkit-transform-origin: 50% 100%;
         transform-origin: 50% 100%;
+
+    .labels {
+      font-family: @df-sans;
+      font-weight: bold;
+      position: absolute;
+      width: 100%;
+      top: 20px;
+      left: 0px;
+      color: white;
+      text-transform: uppercase;
+      font-size: 0px;
+      div {
+        width: 50%;
+        display: inline-block;
+        font-size: 15px;
+        padding: 0px 50px;
+
+        &.away { text-align: left; }
+        &.home { text-align: right; }
+      }
+    }
 
     img { max-height: 100%; width: 100%; height: 100%; }
 
@@ -85,21 +193,56 @@
       top: 0;
       left: 0;
       height: 100%;
-      // height: 90vh;
-
-
-
 
       .dot {
         width: 25px;
         height: 25px;
         // color: white;
-        i { font-size: 2.5em; }
-        // border-radius: 50%;
-        // background-color: white;
-        @media @mobile {
-          width: 25px;
-          height: 25px;
+        i {
+          font-size: 25px;
+          opacity: 0;
+         }
+         .dual {
+           position: absolute;
+           top: 0px;
+           left: 7px;
+           font-size: 22px;
+           font-weight: bold;
+           line-height: 1em;
+           z-index: 15;
+           opacity: 1;
+         }
+        // .x-dot {
+        //   position: absolute;
+        //   top: 0px;
+        //   left: 0px;
+        //   z-index: 10;
+        //   opacity: 0.6;
+        // }
+        .actualDot {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            z-index: 10;
+            border: 1px solid black;
+            background-color: red;
+            width: 19px;
+            height: 20px;
+            border-radius: 50%;
+            opacity: 1;
+        }
+
+        &.show {
+          i {
+            opacity: 1;
+            color: yellow;
+          }
+          .actualDot {
+            opacity: 0;
+          }
+          .dual {
+            opacity: 0;
+          }
         }
       }
     }
@@ -119,12 +262,43 @@
         // -webkit-transform-origin: 50% 100%;
         // transform-origin: 50% 100%;
 
+        .labels {
+          font-family: @df-sans;
+          font-weight: bold;
+          position: absolute;
+          width: 100%;
+          top: 0px;
+          left: 0px;
+          color: white;
+          text-transform: uppercase;
+          font-size: 0px;
+          div {
+            text-align: center;
+            height: 50vh;
+            // display: inline-block;
+            font-size: 15px;
+            padding: 0px 10px;
+            position: relative;
+
+            &.away span {
+              display: block;
+              padding-top: 5px;
+            }
+            &.home span {
+              position: absolute;
+              bottom: 5px;
+              left: 0px;
+              right: 0px;
+            }
+          }
+        }
+
     img {
       max-height: none;
       max-width: none;
       width: auto;
       height: 100vh;
-      margin-left: ~"calc(((100vh * 0.657) - 100vw) / 1.5 * -1)";
+      margin-left: ~"calc(((100vh * 0.657) - 100vw) / 1.8 * -1)";
     }
 
     .overlay {
@@ -139,38 +313,68 @@
         transform: rotate(-90deg);
         height: 66vh;
             width: auto;
-            margin-left: -44%;
+            margin-left: -42%;
             margin-top: 32%;
+
+            @media (max-width: 400px) {
+              margin-left: -64%;
+              margin-top: 38%;
+            }
       }
 
       .dot {
-        // border-radius: 50%;
-        // background-color: white;
-        // i { color: white; }
-        // font-size: 23px;
-        opacity: 0.3;
-        img { width: 100%; height: 100%; margin: 0px; }
-        @media @mobile {
-          width: 23px;
-          height: 23px;
+        width: 25px;
+        height: 25px;
+        // color: white;
+        i {
+          font-size: 25px;
+          opacity: 0;
+         }
+         .dual {
+           position: absolute;
+           top: 0px;
+           left: 7px;
+           font-size: 22px;
+           font-weight: bold;
+           line-height: 1em;
+           z-index: 15;
+           opacity: 1;
+         }
+         .actualDot {
+             position: absolute;
+             top: 0px;
+             left: 0px;
+             z-index: 10;
+             background-color: red;
+             border: 1px solid black;
+             width: 25px;
+             height: 25px;
+             border-radius: 50%;
+             opacity: 1;
+         }
+        .x-dot {
+          width: 25px;
+          height: 25px;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          z-index: 10;
+          opacity: 0.6;
+          margin: 0;
         }
-      }
+        &.show {
+          i {
+            opacity: 1;
+            color: yellow;
+          }
+          .actualDot {
+            opacity: 0;
+          }
+          .dual {
+            opacity: 0;
+          }
+        }
     }
-
-
   }
 }
-
-@-webkit-keyframes rotateOnX {
-  to {
-    -webkit-transform: rotateX(87deg);
-            transform: rotateX(87deg);
-  }
-}
-
-@-webkit-keyframes zoomin {
-  to {
-    -webkit-transform: scale(2, 2) rotateX(87deg);
-            transform:  scale(2, 2) rotateX(87deg);
-  }
 }

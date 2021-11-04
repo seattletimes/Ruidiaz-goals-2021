@@ -1,5 +1,20 @@
 [
   {
+    "Date": "2021/11/01",
+    "Match": "SEA vs LA",
+    "Result": "T 1-1",
+    "Minute scored": 50,
+    "Type": "Penalty Kick",
+    "Expected goal %": "78.84%",
+    "Goals": 1,
+    "distance": "",
+    "x_coordinate": "",
+    "y_coordinate": "",
+    "field_length": "",
+    "field_width": "",
+    "Tweet": "https://twitter.com/SoundersFC/status/1455374709990641667"
+  },
+  {
     "Date": "2021/09/29",
     "Match": "SJ vs SEA",
     "Result": "W 1-3",
