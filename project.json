@@ -6,17 +6,17 @@
     },
     "live": {
       "bucket": "projects.seattletimes.com",
-      "path": ""
+      "path": "2021/local/raul-ruidiaz-soccer-goals-for-seattle-sounders-fc"
     }
   },
-  "title": "",
-  "description": "",
-  "author": "",
-  "url": "",
-  "post_id": 0,
-  "image": "assets/social.jpg",
+  "title": "A look at all 17 of Sounders striker Raul Ruidiaz's 2021 goals",
+  "description": "An interactive breakdown of every goal scored by the Seattle Sounders' striker",
+  "author": "Sean Quinton",
+  "url": "https://projects.seattletimes.com/2021/local/raul-ruidiaz-soccer-goals-for-seattle-sounders-fc/",
+  "post_id": 14370821,
+  "image": "assets/social.png",
   "sheets": ["1_a7XVugVYVE5E8AiBQxTgnscjA1H3OXDQ1JTzo5LYqM"],
   "docs": [],
   "embedded": false,
-  "production": false
+  "production": true
 }
