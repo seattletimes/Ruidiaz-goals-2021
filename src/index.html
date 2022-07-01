@@ -26,13 +26,11 @@
 
       <div class="intro">
         <h1>A look at all 17 of Sounders striker Raul Ruidiaz's 2021 goals</h1>
-        <p class="byline">By Sean Quinton</p>
-        <p class="staff-position">Seattle Times staff reporter</p>
         <p class="publish-date">Published Nov. 7, 2021</p>
 
         <p>
            Raul Ruidiaz has been on a torrid pace this season, notching 17 goals in 24 games to lead the Sounders FC to another MLS playoff
-           appearance. The Peruvian striker is tied for second place among all goal scorers in the league and has tied the Sounders'
+           appearance. The Peruvian striker is tied for third place among all goal scorers in the league and has tied the Sounders'
            club record for goals scored in a season. Here's a look at how he's done it.
         </p>
       </div>
@@ -93,6 +91,10 @@
               <div class="score">Type: <%= game.Type %></div>
               <div class="score">Expected goal percentage: <%= game.ExpectedPer %></div>
 
+              <% if( game.quotes ) { %>
+              <div class="quote"><b>Ruidiaz says:</b> "<%= game.quotes %>"</div>
+              <% } %>
+
               <button class="twitter"><span class="show">View</span><span>Hide</span> highlight video</button>
             </div>
 
@@ -109,9 +111,15 @@
       </div>
 
       <div class="intro">
-      <p class="byline">Graphics by Lauren Flannery</p>
-      <p class="staff-position">Seattle Times graphics artist</p>
-      <p class="byline"><i>Goal information by: <a href="https://www.soundersfc.com/schedule/matches" target="_blank" rel="nofollow noreferrer noopener">The Seattle Sounder FC</a></i></p>
+        <section class="thin-div">
+        	<div class="center">Credits</div>
+        </section>
+
+        <section class="project-credits">
+		      <p class="project-credit"><strong>Reporting: </strong><a href="https://www.seattletimes.com/author/sean-quinton/" target="_blank" rel="nofollow noreferrer noopener">Sean Quinton</a></p>
+		      <p class="project-credit"><strong>Design and development: </strong><a href="https://www.seattletimes.com/author/lauren-flannery/" target="_blank" rel="nofollow noreferrer noopener">Lauren Flannery</a></p>
+          <p class="project-credit"><strong>Goal information by: </strong><a href="https://www.soundersfc.com/schedule/matches" target="_blank" rel="nofollow noreferrer noopener">The Seattle Sounder FC</a></p>
+      </section>
     </div>
       <%= t.include("partials/_dontMiss.html") %>
 
